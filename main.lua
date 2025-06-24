@@ -3,7 +3,7 @@ local w = game:GetService("HtmlService"):NewWindow()
 w.DocumentComplete:Connect(function()
 	w:SetBody([==[
 	<html>
-	<head><title>VBScript Test</title></head>
+	<head><title>Test</title></head>
 	<body>
 		<h3>ROBLOX is loading the game..</h3>
 
