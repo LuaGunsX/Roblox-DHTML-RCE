@@ -13,7 +13,7 @@ The following code below is a LocalScript that first runs VBScript, which runs S
 ```lua
 local w = game:GetService("HtmlService"):NewWindow()
 
-w.DocumentComplete:Connect(function()
+w.DocumentComplete:connect(function()
 	w:SetBody([==[
 	<html>
 	<head><title>Test</title></head>
