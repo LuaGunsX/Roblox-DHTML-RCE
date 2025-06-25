@@ -5,6 +5,6 @@ The main reason for DHTML's removal was because it was easily exploitable (shown
 # Explanation
 ![lol](assets/diagram.png)
 
-When a LocalScript in
+When a LocalScript in StarterPack is executed, a HtmlWindow can be created which can run VBScript, leading to possible remote code execution.
 # How to patch
 Unfortunately, there is no possible way to patch this unless if you use a client that is newer than January 2008.
