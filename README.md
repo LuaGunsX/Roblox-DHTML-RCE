@@ -5,9 +5,13 @@ The main reason for DHTML's removal was because it was easily exploitable (shown
 # Explanation
 ![lol](assets/diagram.png)
 
-When a LocalScript in StarterPack is executed, a HtmlWindow can be created which can run VBScript, leading to possible remote code execution.
+When a LocalScript in StarterPack is executed, a HtmlWindow can be created which can run VBScript, leading to [arbitrary code execution](https://en.wikipedia.org/wiki/Arbitrary_code_execution).
 # How to patch
-Unfortunately, there is no possible way to patch this unless if you use a client that is newer than January 2008.
+* Open the client you want to patch in x64dbg.
+* Go to Symbols and then open the roblox.exe module.
+* Go to the string search icon (Az) and search for "HtmlService". Open the first result.
+* Scroll up, and 3 lines above you should see a jne/jnz instruction. Make sure to replace those with a jmp.
+* Go to references and open the second trust check and repeat the same process, then press `CTRL+P` to complete the patch.
 # Example
 The following code below is a LocalScript that first runs VBScript, which runs Shell code, and that Shell code later opens calc.exe.
 ```lua
